@@ -1,0 +1,6 @@
+venv
+.env
+req.txt
+*.db
+migrations
+logs

@@ -1,0 +1,8 @@
+<body onload="document.Pay.submit()">
+<form name="Pay" method="{% if method %}{{method}}{% else %}post{% endif %}" action="{{url}}" accept-charset="UTF-8">
+    {% for key, value in data.items() %}
+        <input type="hidden" name="{{key}}" value="{{value}}">
+    {% endfor %}
+    <input type="submit" input type="hidden" name="description" value="Testinvoice"/>
+</form>
+</body>
