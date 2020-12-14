@@ -46,7 +46,7 @@ def index():
         required_params = Payment.make_required_params(common_params, eur_rub_params)
 
     params = Payment.make_params(required_params, secret_key)
-    payment.payment_save(params, form, db)
+    payment.payment_save(params, form)
     if not request_url:
         url = request_urls['eur']
         return render_template('hidden_form.html', data=params, url=url)
