@@ -44,13 +44,13 @@ class Payment(db.Model):
         response = response.json()
         return response
 
-    def payment_save(self, params, form, database):
+    def payment_save(self, params, form):
         self.params = str(params)
         self.amount = form.user_amount.data
         self.currency = form.user_currency.data
         self.payment_status = 'InProcessing'
-        database.session.add(self)
-        database.session.commit()
+        db.session.add(self)
+        db.session.commit()
 
     def payment_update(self, response=None):
         if response is None:
