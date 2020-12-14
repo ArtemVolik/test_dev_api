@@ -74,7 +74,6 @@ class Payment(db.Model):
             'data': data
         }
 
-
     def get_status(self, response):
         pass
 
