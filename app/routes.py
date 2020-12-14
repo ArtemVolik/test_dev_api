@@ -53,13 +53,17 @@ def index():
     try:
         response = payment.make_payment_request(params, request_url)
     except requests.exceptions.HTTPError:
-        return render_template('index.html', title='Not success', form=form, httperror=True)
+        return render_template(
+            'index.html', title='Not success', form=form, httperror=True)
     if not response['result']:
         payment.payment_update()
-        return render_template('index.html', title='Not success', form=form, response=response)
+        return render_template(
+            'index.html', title='Not success', form=form, response=response)
     payment.payment_update(response)
     response = Payment.response_handling(response)
     if len(response) < 2:
         return redirect(response['url'])
-    return render_template('hidden_form.html', data=response['data'], url=response['url'], method=response['method'])
+    return render_template(
+        'hidden_form.html', data=response['data'],
+        url=response['url'], method=response['method'])
 
