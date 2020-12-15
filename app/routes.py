@@ -19,7 +19,7 @@ def index():
         "shop_id": Config.SHOP_ID,
         "shop_order_id": form.user_shop_order_id.data,
     }
-    eur_rub_params = {
+    eur_params = {
         "amount": form.user_amount.data,
         "currency": form.user_currency.data,
     }
@@ -43,7 +43,7 @@ def index():
         required_params = Payment.make_required_params(common_params, rub_params)
         request_url = request_urls['rub']
     elif form.user_currency.data == currencies[2]:
-        required_params = Payment.make_required_params(common_params, eur_rub_params)
+        required_params = Payment.make_required_params(common_params, eur_params)
 
     params = Payment.make_params(required_params, secret_key)
     payment.payment_save(params, form)
