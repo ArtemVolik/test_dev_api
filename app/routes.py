@@ -26,7 +26,7 @@ def index():
     usd_params = {
         "payer_currency": form.user_currency.data,
         "shop_amount": form.user_amount.data,
-        "shop_currency": Config.SHOP_CURRENCY[0]
+        "shop_currency": form.user_currency.data #Config.SHOP_CURRENCY[0]
     }
     rub_params = {
         "payway": "payeer_rub",
